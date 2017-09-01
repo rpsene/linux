@@ -152,7 +152,7 @@ static int systemsim_net_start_xmit(struct sk_buff *skb, struct net_device *dev)
 	/* we might need to checksum or something */
 	systemsim_net_send(devno, skb->data, skb->len);
 
-	dev->last_rx = jiffies;
+	//dev->last_rx = jiffies;
 	dev->stats.rx_bytes += skb->len;
 	dev->stats.tx_bytes += skb->len;
 	dev->stats.rx_packets++;
@@ -193,7 +193,7 @@ static int systemsim_net_poll(struct napi_struct *napi, int budget)
 			else
 				netif_rx_ni(skb);
 
-			dev->last_rx = jiffies;
+			//dev->last_rx = jiffies;
 			dev->stats.rx_packets++;
 			dev->stats.rx_bytes += ns;
 		} else {
